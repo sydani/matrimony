@@ -1,0 +1,98 @@
+<section class="gradient">
+  <section class="container p-3">
+    <div class="d-flex align-items-center py-4 position-relative text-white">
+      <button mat-icon-button routerLink="/home">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <span class="fs-3 ps-3">Daily Recommendations</span>
+    </div>
+  </section>
+
+  <section class="gesture-container p-3">
+    <div class="slider-container">
+      <div class="gesture-stack">
+        @for (user of users; track user; let first = $first) {
+          @if ($index < 3) {
+            <mat-card
+              appearance="outlined"
+              [class]="'col card ' + 'gesture-' + ($index + 1)"
+              [ngStyle]="{
+                opacity: $index > 0 ? 'calc(1/' + ($index + 1) + ')' : 1
+              }"
+            >
+              <div [ngStyle]="{ visibility: first ? 'visible' : 'hidden' }">
+                <img src="{{'../../assets/images/'+user.imageUrls[0] }}" class="card-img-top" alt="image" />
+                <mat-card-content>
+                  <div class="d-flex pt-2">
+                    @if (user.verified) {
+                    <div class="d-flex align-items-center verified me-3">
+                      <mat-icon class="icon material-icons-outlined"
+                        >verified_user</mat-icon
+                      >
+                      <span class="small-text">Verified</span>
+                    </div>
+                    } @if (user.premium) {
+                    <div class="d-flex align-items-center premium">
+                      <mat-icon class="icon material-icons-outlined">
+                        workspace_premium
+                      </mat-icon>
+                      <span class="small-text">Premium NRI</span>
+                    </div>
+                    }
+                  </div>
+                  <p class="card-title fs-6 fw-bold py-2 m-0">{{ user.name }}</p>
+
+                  <span>{{ user.age }}, </span>
+                  <span>{{ user.height }}, </span>
+                  <span>{{ user.occupation }}, </span>
+                  <br />
+                  <span>{{ user.religion }}, </span>
+                  <br />
+                  <span>{{ user.city }}, </span>
+                  <span>{{ user.state }}, </span>
+                  <span>{{ user.country }}. </span>
+                </mat-card-content>
+                <div class="row pb-2">
+                  <div class="px-3 py-3">
+                    <mat-divider class=""></mat-divider>
+                  </div>
+                  <div class="col-3 ps-3 d-flex align-items-center">
+                    <span
+                      ><mat-icon class="material-icons-outlined icon"
+                        >grade</mat-icon
+                      ></span
+                    >
+                    <span class="ps-1" style="font-size: 0.75rem">Shortlist</span>
+                  </div>
+                  <div class="col-9">
+                    <mat-card-actions class="justify-content-end">
+                      <span class="fw-bold">Like her?</span>
+                      <button
+                        mat-stroked-button
+                        class="mx-2 rounded-pill"
+                        (click)="handleDislike(user.id)"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                      <button
+                        mat-flat-button
+                        color="warn"
+                        class="rounded-pill"
+                        (click)="handleLike(user.id)"
+                      >
+                        <mat-icon>check</mat-icon>
+                      </button>
+                    </mat-card-actions>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          } 
+        }
+        @empty{
+          <h2 class="bg-light p-5">All profiles completed!</h2>
+        }
+      </div>
+    </div>
+  </section>
+</section>

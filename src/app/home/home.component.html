@@ -1,0 +1,80 @@
+<section class="gradient p-3">
+  <section class="container">
+    <div class="row py-3 text-white">
+      <div class="col d-flex justify-content-between align-items-center">
+        <span class="fs-3">My Matches</span>
+        <div>
+          <button mat-icon-button routerLink="/gesture">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="row">
+      <div
+        class="col pt-2 pb-4 d-flex align-items-center justify-content-between text-white"
+      >
+        <span class="fs-3">8 Profiles pending with me</span>
+        <span
+          class="fs-6 px-3 py-1 text-white new-badge"
+          >5 NEW</span
+        >
+      </div>
+      <owl-carousel-o [options]="carouselOptions">
+        @for ( user of users; track user) {
+        <ng-template carouselSlide>
+          <mat-card class="col card">
+            <img
+              src="{{'../../assets/images/'+user.imageUrls[0] }}"
+              class="card-img-top"
+              alt="image"
+              (click)="goToProfile(user.id)"
+            />
+            <mat-card-content (click)="goToProfile(user.id)">
+              <p class="card-title fs-6 fw-bold py-2 m-0">{{ user.name }}</p>
+              <span>{{ user.age }}, </span>
+              <span>{{ user.height }}, </span>
+              <span>{{ user.occupation }}, </span>
+              <br />
+              <span>{{ user.religion }}, </span>
+              <br />
+              <span>{{ user.city }}, </span>
+              <span>{{ user.state }}, </span>
+              <span>{{ user.country }}. </span>
+            </mat-card-content>
+            <div class="row pb-2">
+              <div class="px-3 py-3">
+                <mat-divider class=""></mat-divider>
+              </div>
+              <div class="d-flex">
+                <mat-card-actions>
+                  <button
+                    mat-flat-button
+                    color="warn"
+                    class="me-2 rounded-pill"
+                    (click)="handleLike(user.id)"
+                  >
+                    Yes
+                  </button>
+                  <button
+                    mat-stroked-button
+                    class="rounded-pill"
+                    (click)="handleDislike(user.id)"
+                  >
+                    No
+                  </button>
+                </mat-card-actions>
+              </div>
+            </div>
+          </mat-card>
+        </ng-template>
+        } @empty{
+          <h2 class="bg-light p-5">All profiles completed!</h2>
+        }
+      </owl-carousel-o>
+    </div>
+  </section>
+</section>

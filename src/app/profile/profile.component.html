@@ -1,0 +1,61 @@
+<section class="gradient">
+    <div class="d-flex align-items-center py-4 position-relative text-white back">
+        <button mat-icon-button routerLink="/home">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="fs-3 ps-3">Previous</span>
+      </div>
+  <section class="container p-0">
+    <div
+      class="d-flex profile-container row justify-content-between align-items-center p-0"
+    >
+      <div class="row align-items-center justify-content-between p-0">
+        <div
+          class="carousel slide col-12 col-sm-12 col-xs-12 col-lg-6 col-md-8"
+        >
+          <div class="carousel-inner">
+            <owl-carousel-o [options]="carouselOptions">
+              @for ( userImg of user?.imageUrls; track user) {
+              <ng-template carouselSlide>
+                <div class="slider-container">
+                <img
+                  src="{{'../../assets/images/'+userImg }}"
+                  class="card-img-top"
+                  alt="image"
+                />
+                <div class="carousel-caption d-flex justify-content-end">
+                  <span class="owl-text-overlay">{{
+                    $index + 1 + "/" + user?.imageUrls?.length
+                  }}</span>
+                </div>
+            </div>
+              </ng-template>
+              } @empty{
+              <h2>No images found!</h2>
+              }
+            </owl-carousel-o>
+          </div>
+        </div>
+
+        <div
+          class="col-12 col-sm-12 col-xs-12 col-lg-6 col-md-4 profile-details"
+        >
+          <mat-card class="col card p-0">
+            <mat-card-content>
+              <p class="card-title fs-6 fw-bold py-2 m-0">{{ user?.name }}</p>
+              <span>{{ user?.age }}, </span>
+              <span>{{ user?.height }}, </span>
+              <span>{{ user?.occupation }}, </span>
+              <br />
+              <span>{{ user?.religion }}, </span>
+              <br />
+              <span>{{ user?.city }}, </span>
+              <span>{{ user?.state }}, </span>
+              <span>{{ user?.country }}. </span>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.carousel";
+@import "ngx-owl-carousel-o/lib/styles/scss/owl.theme.default";
+
+.mat-icon {
+  margin: 0 !important;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.snackbar-danger {
+  --mdc-snackbar-container-color: #f8d7da;
+  --mat-mdc-snack-bar-button-color: #f44336;
+  --mdc-snackbar-supporting-text-color: #842029;
+}
+
+.snackbar-success {
+  --mdc-snackbar-container-color: #d1e7dd;
+  --mat-mdc-snack-bar-button-color: #f44336;
+  --mdc-snackbar-supporting-text-color: #0f5132;
+}
+
+.card {
+  border-radius: 15px !important;
+}
+.card-img-top {
+  width: 378px;
+  height: 472px;
+  object-fit: cover;
+  border-top-left-radius: 14px !important;
+  border-top-right-radius: 14px !important;
+}
+
+.mat-mdc-card {
+  border: none !important;
+}
